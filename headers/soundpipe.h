@@ -328,6 +328,7 @@ typedef struct  {
     SPFLOAT lkf;
     SPFLOAT a[8];
     SPFLOAT pidsr;
+    SPFLOAT resonance;
 } sp_buthp;
 
 int sp_buthp_create(sp_buthp **p);
@@ -339,6 +340,7 @@ typedef struct  {
     SPFLOAT lkf;
     SPFLOAT a[8];
     SPFLOAT pidsr;
+    SPFLOAT resonance;
 } sp_butlp;
 
 int sp_butlp_create(sp_butlp **p);

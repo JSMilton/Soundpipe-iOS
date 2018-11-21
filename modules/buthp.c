@@ -21,8 +21,6 @@
 
 #include "soundpipe.h"
 
-/* Filter loop */
-
 static int sp_butter_filter(SPFLOAT *in, SPFLOAT *out, SPFLOAT *a)
 {
     SPFLOAT t, y;
@@ -53,6 +51,7 @@ int sp_buthp_init(sp_data *sp, sp_buthp *p)
     p->sr = sp->sr;
     p->freq = 1000;
     p->pidsr = M_PI / sp->sr * 1.0;
+    p->resonance = ROOT2;
     if (p->istor==0.0) {
         p->a[6] = p->a[7] = 0.0;
         p->lkf = 0.0;
@@ -73,11 +72,11 @@ int sp_buthp_compute(sp_data *sp, sp_buthp *p, SPFLOAT *in, SPFLOAT *out)
       p->lkf = p->freq;
       c = tan((SPFLOAT)(p->pidsr * p->lkf));
 
-      a[1] = 1.0 / ( 1.0 + ROOT2 * c + c * c);
+      a[1] = 1.0 / ( 1.0 + p->resonance * c + c * c);
       a[2] = -(a[1] + a[1]);
       a[3] = a[1];
       a[4] = 2.0 * ( c*c - 1.0) * a[1];
-      a[5] = ( 1.0 - ROOT2 * c + c * c) * a[1];
+      a[5] = ( 1.0 - p->resonance * c + c * c) * a[1];
     }
     sp_butter_filter(in, out, p->a);
     return SP_OK;

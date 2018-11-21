@@ -50,6 +50,7 @@ int sp_butlp_init(sp_data *sp, sp_butlp *p)
     p->sr = sp->sr;
     p->freq = 1000;
     p->pidsr = M_PI / sp->sr * 1.0;
+    p->resonance = ROOT2;
     if (p->istor==0.0) {
         p->a[6] = p->a[7] = 0.0;
         p->lkf = 0.0;
@@ -69,11 +70,11 @@ int sp_butlp_compute(sp_data *sp, sp_butlp *p, SPFLOAT *in, SPFLOAT *out)
         a = p->a;
         p->lkf = p->freq;
         c = 1.0 / tan((SPFLOAT)(p->pidsr * p->lkf));
-        a[1] = 1.0 / ( 1.0 + ROOT2 * c + c * c);
+        a[1] = 1.0 / ( 1.0 + p->resonance * c + c * c);
         a[2] = a[1] + a[1];
         a[3] = a[1];
         a[4] = 2.0 * ( 1.0 - c*c) * a[1];
-        a[5] = ( 1.0 - ROOT2 * c + c * c) * a[1];
+        a[5] = ( 1.0 - p->resonance * c + c * c) * a[1];
     }
 
     sp_butter_filter(in, out, p->a);
