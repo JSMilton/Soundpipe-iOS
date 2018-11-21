@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A09A98C21A58CC300522758 /* soundpipe.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A46D64A21A582F50046ED46 /* soundpipe.h */; };
 		1A46D7F221A5844F0046ED46 /* soundpipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A46D64A21A582F50046ED46 /* soundpipe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1A46D7F321A5845C0046ED46 /* eqfil.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A46D6F421A583A20046ED46 /* eqfil.c */; };
 		1A46D7F421A5845C0046ED46 /* brown.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A46D6F521A583A20046ED46 /* brown.c */; };
@@ -131,6 +132,19 @@
 		1A46D86E21A584850046ED46 /* ftol.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A46D6E921A582F50046ED46 /* ftol.h */; };
 		1A46D86F21A584850046ED46 /* openlpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A46D6EC21A582F50046ED46 /* openlpc.h */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1A09A98B21A58CB700522758 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				1A09A98C21A58CC300522758 /* soundpipe.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1A46D4BA21A582CC0046ED46 /* libSoundpipe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSoundpipe.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -554,6 +568,7 @@
 				1A46D4B621A582CC0046ED46 /* Headers */,
 				1A46D4B721A582CC0046ED46 /* Sources */,
 				1A46D4B821A582CC0046ED46 /* Frameworks */,
+				1A09A98B21A58CB700522758 /* CopyFiles */,
 			);
 			buildRules = (
 			);
