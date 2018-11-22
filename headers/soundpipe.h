@@ -325,7 +325,7 @@ int sp_butbr_init(sp_data *sp, sp_butbr *p);
 int sp_butbr_compute(sp_data *sp, sp_butbr *p, SPFLOAT *in, SPFLOAT *out);
 typedef struct  {
     SPFLOAT sr, freq, istor;
-    SPFLOAT lkf;
+    SPFLOAT lkf, lkr;
     SPFLOAT a[8];
     SPFLOAT pidsr;
     SPFLOAT resonance;
@@ -337,7 +337,7 @@ int sp_buthp_init(sp_data *sp, sp_buthp *p);
 int sp_buthp_compute(sp_data *sp, sp_buthp *p, SPFLOAT *in, SPFLOAT *out);
 typedef struct  {
     SPFLOAT sr, freq, istor;
-    SPFLOAT lkf;
+    SPFLOAT lkf, lkr;
     SPFLOAT a[8];
     SPFLOAT pidsr;
     SPFLOAT resonance;

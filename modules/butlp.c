@@ -54,6 +54,7 @@ int sp_butlp_init(sp_data *sp, sp_butlp *p)
     if (p->istor==0.0) {
         p->a[6] = p->a[7] = 0.0;
         p->lkf = 0.0;
+        p->lkr = 0;
     }
     return SP_OK;
 }
@@ -65,10 +66,11 @@ int sp_butlp_compute(sp_data *sp, sp_butlp *p, SPFLOAT *in, SPFLOAT *out)
       return SP_OK;
     }
 
-    if (p->freq != p->lkf){
+    if (p->freq != p->lkf || p->resonance != p->lkr) {
         SPFLOAT *a, c;
         a = p->a;
         p->lkf = p->freq;
+        p->lkr = p->resonance;
         c = 1.0 / tan((SPFLOAT)(p->pidsr * p->lkf));
         a[1] = 1.0 / ( 1.0 + p->resonance * c + c * c);
         a[2] = a[1] + a[1];
