@@ -33,21 +33,23 @@ int sp_butbp_destroy(sp_butbp **p)
     return SP_OK;
 }
 
-int sp_butbp_init(sp_data *sp, sp_butbp *p)
+int sp_butbp_init(sp_butbp *p)
 {
-    p->istor = 0.0;
-    p->sr = sp->sr;
     p->freq = 1000;
     p->bw = 10;
-    p->pidsr = M_PI / sp->sr * 1.0;
-    p->tpidsr = 2 * M_PI / sp->sr * 1.0;
     p->a[6] = p->a[7] = 0.0;
     p->lkf = 0.0;
     p->lkb = 0.0;
     return SP_OK;
 }
 
-int sp_butbp_compute(sp_data *sp, sp_butbp *p, SPFLOAT *in, SPFLOAT *out)
+void sp_butbp_setsr(sp_butbp *p, SPFLOAT sr)
+{
+    p->pidsr = M_PI / sr * 1.0;
+    p->tpidsr = 2 * M_PI / sr * 1.0;
+}
+
+int sp_butbp_compute(sp_butbp *p, SPFLOAT *in, SPFLOAT *out)
 {
     SPFLOAT *a = p->a;
     SPFLOAT t, y;

@@ -302,7 +302,7 @@ int sp_brown_destroy(sp_brown **p);
 int sp_brown_init(sp_data *sp, sp_brown *p);
 int sp_brown_compute(sp_data *sp, sp_brown *p, SPFLOAT *in, SPFLOAT *out);
 typedef struct {
-    SPFLOAT sr, freq, bw, istor;
+    SPFLOAT freq, bw;
     SPFLOAT lkf, lkb;
     SPFLOAT a[8];
     SPFLOAT pidsr, tpidsr;
@@ -310,8 +310,9 @@ typedef struct {
 
 int sp_butbp_create(sp_butbp **p);
 int sp_butbp_destroy(sp_butbp **p);
-int sp_butbp_init(sp_data *sp, sp_butbp *p);
-int sp_butbp_compute(sp_data *sp, sp_butbp *p, SPFLOAT *in, SPFLOAT *out);
+int sp_butbp_init(sp_butbp *p);
+void sp_butbp_setsr(sp_butbp *p, SPFLOAT sr);
+int sp_butbp_compute(sp_butbp *p, SPFLOAT *in, SPFLOAT *out);
 typedef struct {
     SPFLOAT sr, freq, bw, istor;
     SPFLOAT lkf, lkb;
@@ -324,7 +325,7 @@ int sp_butbr_destroy(sp_butbr **p);
 int sp_butbr_init(sp_data *sp, sp_butbr *p);
 int sp_butbr_compute(sp_data *sp, sp_butbr *p, SPFLOAT *in, SPFLOAT *out);
 typedef struct  {
-    SPFLOAT sr, freq, istor;
+    SPFLOAT freq;
     SPFLOAT lkf, lkr;
     SPFLOAT a[8];
     SPFLOAT pidsr;
@@ -333,10 +334,11 @@ typedef struct  {
 
 int sp_buthp_create(sp_buthp **p);
 int sp_buthp_destroy(sp_buthp **p);
-int sp_buthp_init(sp_data *sp, sp_buthp *p);
-int sp_buthp_compute(sp_data *sp, sp_buthp *p, SPFLOAT *in, SPFLOAT *out);
+int sp_buthp_init(sp_buthp *p);
+void sp_buthp_setsr(sp_buthp *p, SPFLOAT sr);
+int sp_buthp_compute(sp_buthp *p, SPFLOAT *in, SPFLOAT *out);
 typedef struct  {
-    SPFLOAT sr, freq, istor;
+    SPFLOAT freq;
     SPFLOAT lkf, lkr;
     SPFLOAT a[8];
     SPFLOAT pidsr;
@@ -345,8 +347,9 @@ typedef struct  {
 
 int sp_butlp_create(sp_butlp **p);
 int sp_butlp_destroy(sp_butlp **p);
-int sp_butlp_init(sp_data *sp, sp_butlp *p);
-int sp_butlp_compute(sp_data *sp, sp_butlp *p, SPFLOAT *in, SPFLOAT *out);
+int sp_butlp_init(sp_butlp *p);
+void sp_butlp_setsr(sp_butlp *p, SPFLOAT sr);
+int sp_butlp_compute(sp_butlp *p, SPFLOAT *in, SPFLOAT *out);
 typedef struct{
     SPFLOAT lim, k1;
 }sp_clip;

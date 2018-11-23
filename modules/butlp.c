@@ -44,22 +44,22 @@ int sp_butlp_destroy(sp_butlp **p)
     return SP_OK;
 }
 
-int sp_butlp_init(sp_data *sp, sp_butlp *p)
+int sp_butlp_init(sp_butlp *p)
 {
-    p->istor = 0.0;
-    p->sr = sp->sr;
     p->freq = 1000;
-    p->pidsr = M_PI / sp->sr * 1.0;
     p->resonance = ROOT2;
-    if (p->istor==0.0) {
-        p->a[6] = p->a[7] = 0.0;
-        p->lkf = 0.0;
-        p->lkr = 0;
-    }
+    p->a[6] = p->a[7] = 0.0;
+    p->lkf = 0.0;
+    p->lkr = 0;
     return SP_OK;
 }
 
-int sp_butlp_compute(sp_data *sp, sp_butlp *p, SPFLOAT *in, SPFLOAT *out)
+void sp_butlp_setsr(sp_butlp *p, SPFLOAT sr)
+{
+    p->pidsr = M_PI / sr * 1.0;
+}
+
+int sp_butlp_compute(sp_butlp *p, SPFLOAT *in, SPFLOAT *out)
 {
     if (p->freq <= 0.0){
       *out = 0;
